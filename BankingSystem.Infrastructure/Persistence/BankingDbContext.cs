@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BankingSystem.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankingSystem.Infrastructure.Persistence
 {
@@ -10,10 +11,16 @@ namespace BankingSystem.Infrastructure.Persistence
 
         // Define your DbSet properties for your entities here
 
+        public DbSet<User> Users => Set<User>();
+        public DbSet<Role> Roles => Set<Role>();
+        public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // Configure your entity mappings here
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BankingDbContext).Assembly);
+
         }
     }
 }
