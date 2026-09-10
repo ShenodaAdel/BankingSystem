@@ -1,4 +1,5 @@
-﻿using BankingSystem.Infrastructure.Persistence;
+﻿using BankingSystem.Application.Abstractions.Persistence;
+using BankingSystem.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,8 @@ namespace BankingSystem.Infrastructure
         {
             services.AddDbContext<BankingDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }
