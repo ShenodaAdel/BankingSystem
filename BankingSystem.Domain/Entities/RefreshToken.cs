@@ -9,6 +9,7 @@ namespace BankingSystem.Domain.Entities
         public DateTimeOffset? RevokedAt { get; set; }
         public string? CreatedByIp { get; set; }
         public string? UserAgent { get; set; }
+        public Guid? ReplacedByTokenId { get; set; }
         public Guid UserId { get; set; }
         public User User { get; set; } = null!;
     }

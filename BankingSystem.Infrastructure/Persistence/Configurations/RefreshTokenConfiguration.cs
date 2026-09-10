@@ -28,6 +28,9 @@ namespace BankingSystem.Infrastructure.Persistence.Configurations
             builder.Property(rt => rt.UserAgent)
                 .HasMaxLength(512);
 
+            builder.Property(rt => rt.ReplacedByTokenId)
+                .IsRequired(false);
+
             builder.HasOne(rt => rt.User)
                 .WithMany(u => u.RefreshTokens)
                 .HasForeignKey(rt => rt.UserId)

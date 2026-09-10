@@ -4,6 +4,8 @@ namespace BankingSystem.Domain.Entities
 {
     public class User : BaseEntity
     {
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
         public string Email { get; private set; } = null!;
         public string NormalizedEmail { get; private set; } = null!;
         public string PasswordHash { get; set; } = null!;
@@ -12,7 +14,6 @@ namespace BankingSystem.Domain.Entities
 
         // Stays false until the user confirms their email.
         public bool IsActive { get; set; } 
-
         public int AccessFailedCount { get; set; }
         public DateTimeOffset? LockoutEnd { get; set; }
         public Role Role { get; set; } = null!;

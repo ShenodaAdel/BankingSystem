@@ -12,6 +12,14 @@ namespace BankingSystem.Infrastructure.Persistence.Configurations
         {
             builder.HasKey(u => u.Id);
 
+            builder.Property(u => u.FirstName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(u => u.LastName)
+                .IsRequired()
+                .HasMaxLength(100);
+
             builder.Property(u => u.Email)
                 .IsRequired()
                 .HasMaxLength(256);
@@ -39,12 +47,15 @@ namespace BankingSystem.Infrastructure.Persistence.Configurations
             new
                 {
                     Id = Guid.Parse(DefaultUsers.Admin.Id),
+                    FirstName = DefaultUsers.Admin.FirstName,
+                    LastName = DefaultUsers.Admin.LastName,
                     Email = DefaultUsers.Admin.Email,
                     NormalizedEmail = DefaultUsers.Admin.NormalizedEmail,
                     PasswordHash = DefaultUsers.Admin.PasswordHash,
-                    RoleId = Guid.Parse(DefaultRoles.Admin.Id),
-                    IsActive = true,
-                    AccessFailedCount = 0,
+                    Phone = DefaultUsers.Admin.Phone,
+                    RoleId = Guid.Parse(DefaultUsers.Admin.RoleId),
+                    IsActive = DefaultUsers.Admin.IsActive,
+                    AccessFailedCount = DefaultUsers.Admin.AccessFailedCount,
                     CreatedAt = SeededAt
                 });
         }
