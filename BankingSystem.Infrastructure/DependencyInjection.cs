@@ -1,5 +1,8 @@
 ﻿using BankingSystem.Application.Abstractions.Persistence;
+using BankingSystem.Application.Abstractions.Security;
 using BankingSystem.Infrastructure.Persistence;
+using BankingSystem.Infrastructure.Persistence.Repositories;
+using BankingSystem.Infrastructure.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +17,8 @@ namespace BankingSystem.Infrastructure
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<IPasswordHasher, BCryptPasswordHasher>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

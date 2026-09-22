@@ -1,3 +1,4 @@
+using BankingSystem.Application;
 using BankingSystem.Infrastructure;
 using BankingSystem.Infrastructure.Persistence;
 
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddHealthChecks().AddDbContextCheck<BankingDbContext>("sql-server");
 

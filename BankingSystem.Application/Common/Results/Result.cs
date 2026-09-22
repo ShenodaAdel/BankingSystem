@@ -30,7 +30,7 @@
         public Error Error => Errors.Count > 0 ? Errors[0] : Error.None;
 
         public static Result Success() => new(true, []);
-        public static Result Failure(Error error) => new(false, [error]); // Single error
+        public static Result Failure(Error  error) => new(false, [error]); // Single error
         public static Result Failure(IEnumerable<Error> errors) => new(false, errors);
 
         public static Result<T> Success<T>(T value) => Result<T>.Success(value);
